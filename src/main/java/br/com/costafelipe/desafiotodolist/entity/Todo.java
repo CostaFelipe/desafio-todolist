@@ -1,5 +1,67 @@
 package br.com.costafelipe.desafiotodolist.entity;
 
-public class Todo {
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "todo")
+public class Todo implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private UUID id;
+  private String nome;
+  private String descricao;
+  private boolean realizado;
+  private LocalDateTime dataCriacao;
+  private LocalDateTime dataUpdate;
+
+  public UUID getId() {
+    return id;
+  }
+  public void setId(UUID id) {
+    this.id = id;
+  }
+  public String getNome() {
+    return nome;
+  }
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+  public String getDescricao() {
+    return descricao;
+  }
+  public void setDescricao(String descricao) {
+    this.descricao = descricao;
+  }
+  public boolean isRealizado() {
+    return realizado;
+  }
+  public void setRealizado(boolean realizado) {
+    this.realizado = realizado;
+  }
+  public LocalDateTime getDataCriacao() {
+    return dataCriacao;
+  }
+  public void setDataCriacao(LocalDateTime dataCriacao) {
+    this.dataCriacao = dataCriacao;
+  }
+  public LocalDateTime getDataUpdate() {
+    return dataUpdate;
+  }
+  public void setDataUpdate(LocalDateTime dataUpdate) {
+    this.dataUpdate = dataUpdate;
+  }
+
+
 
 }
