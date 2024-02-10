@@ -1,5 +1,11 @@
 package br.com.costafelipe.desafiotodolist.repository;
 
-public interface TodoRepository {
+import java.util.UUID;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.costafelipe.desafiotodolist.entity.Todo;
+
+public interface TodoRepository extends JpaRepository<Todo, UUID>{
 
 }

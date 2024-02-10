@@ -34,34 +34,39 @@ public class Todo implements Serializable {
   public String getNome() {
     return nome;
   }
+
   public void setNome(String nome) {
     this.nome = nome;
   }
+
   public String getDescricao() {
     return descricao;
   }
   public void setDescricao(String descricao) {
     this.descricao = descricao;
   }
+
   public boolean isRealizado() {
     return realizado;
   }
+
   public void setRealizado(boolean realizado) {
     this.realizado = realizado;
   }
+
   public LocalDateTime getDataCriacao() {
     return dataCriacao;
   }
+
   public void setDataCriacao(LocalDateTime dataCriacao) {
     this.dataCriacao = dataCriacao;
   }
+
   public LocalDateTime getDataUpdate() {
     return dataUpdate;
   }
+
   public void setDataUpdate(LocalDateTime dataUpdate) {
     this.dataUpdate = dataUpdate;
   }
-
-
-
 }
