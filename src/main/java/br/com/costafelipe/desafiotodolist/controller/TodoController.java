@@ -1,5 +1,54 @@
 package br.com.costafelipe.desafiotodolist.controller;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.costafelipe.desafiotodolist.entity.Todo;
+import br.com.costafelipe.desafiotodolist.service.TodoService;
+
+@RestController
+@RequestMapping("api/v1/todos")
 public class TodoController {
+
+  private final TodoService todoService;
+
+  public TodoController(TodoService todoService) {
+    this.todoService = todoService;
+  }
+
+  @PostMapping
+  List<Todo> create(@RequestBody Todo todo) {
+    return todoService.create(todo);
+  }
+
+  @PutMapping
+  List<Todo> update(Todo todo) {
+    return todoService.update(todo);
+  }
+
+  @DeleteMapping("/{id}")
+  List<Todo> delete(@PathVariable("id") UUID id) {
+    return todoService.delete(id);
+  }
+
+  @GetMapping("/{id}")
+  Optional<Todo> getTodo(@PathVariable("id") UUID id) {
+    return todoService.findById(id);
+  }
+
+  @GetMapping
+  List<Todo> list() {
+    return todoService.list();
+  }
 
 }

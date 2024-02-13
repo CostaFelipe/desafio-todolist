@@ -31,9 +31,6 @@ public class TodoService {
   }
 
   public List<Todo> delete(UUID id) {
-    if (id == null) {
-      return null;
-    }
     todoRepository.deleteById(id);
     return list();
   }
@@ -43,9 +40,6 @@ public class TodoService {
   }
 
   public Optional<Todo> findById(UUID id) {
-    if (id == null) {
-      return null;
-    }
     return todoRepository.findById(id);
   }
 }
