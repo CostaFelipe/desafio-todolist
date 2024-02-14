@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.costafelipe.desafiotodolist.entity.Todo;
@@ -36,7 +37,8 @@ public class TodoService {
   }
 
   public List<Todo> list() {
-    return todoRepository.findAll();
+    Sort sort = Sort.by("prioridade").descending().and(Sort.by("nome"));
+    return todoRepository.findAll(sort);
   }
 
   public Optional<Todo> findById(UUID id) {
