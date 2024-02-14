@@ -22,6 +22,7 @@ public class Todo implements Serializable {
   private String nome;
   private String descricao;
   private boolean realizado;
+  private int prioridade;
   private LocalDateTime dataCriacao;
   private LocalDateTime dataUpdate;
 
@@ -69,4 +70,16 @@ public class Todo implements Serializable {
   public void setDataUpdate(LocalDateTime dataUpdate) {
     this.dataUpdate = dataUpdate;
   }
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public int getPrioridade() {
+    return prioridade;
+  }
+
+  public void setPrioridade(int prioridade) {
+    this.prioridade = prioridade;
+  }
+
 }
