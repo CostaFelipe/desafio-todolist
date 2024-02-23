@@ -17,7 +17,7 @@ public class Todo implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
   private String nome;
   private String descricao;
@@ -47,7 +47,7 @@ public class Todo implements Serializable {
     this.descricao = descricao;
   }
 
-  public boolean isRealizado() {
+  public boolean getRealizado() {
     return realizado;
   }
 

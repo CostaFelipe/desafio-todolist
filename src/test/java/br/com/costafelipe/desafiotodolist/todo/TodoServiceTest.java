@@ -3,6 +3,7 @@ package br.com.costafelipe.desafiotodolist.todo;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.junit.jupiter.api.AfterEach;
@@ -45,7 +46,6 @@ public class TodoServiceTest {
     t1.setDescricao("teste e teste e teste");
     t1.setPrioridade(1);
     t1.setRealizado(false);
-    ;
     t1.setDataCriacao(LocalDateTime.now());
 
     Todo t2 = new Todo();
@@ -54,7 +54,6 @@ public class TodoServiceTest {
     t2.setDescricao("teste 2 e teste 2 e teste 2");
     t2.setPrioridade(2);
     t2.setRealizado(true);
-    ;
     t2.setDataCriacao(LocalDateTime.now());
 
     this.todos.add(t1);
@@ -76,6 +75,36 @@ public class TodoServiceTest {
     //then
     assertThat(actualTodos.size()).isEqualTo(this.todos.size());
     verify(todoRepository, times(1)).findAll();
+  }
+
+  @Test
+  void testFindById() {
+    //given
+    Todo t = new Todo();
+    t.setId(UUID.fromString("2c3d8c6d-a8a3-461b-babd-d206226f7bc3"));
+    t.setNome("Teste 1");
+    t.setDescricao("teste e teste e teste");
+    t.setPrioridade(1);
+    t.setRealizado(false);
+    t.setDataCriacao(LocalDateTime.now());
+
+
+    given(todoRepository.findById(t.getId())).willReturn(Optional.of(t));
+
+    //then
+    Todo returnTodo = todoService.findById(UUID.fromString("2c3d8c6d-a8a3-461b-babd-d206226f7bc3")).get();
+
+    //when
+    assertThat(returnTodo.getId()).isEqualTo(t.getId());
+    assertThat(returnTodo.getNome()).isEqualTo(t.getNome());
+    assertThat(returnTodo.getDescricao()).isEqualTo(t.getDescricao());
+    assertThat(returnTodo.getPrioridade()).isEqualTo(t.getPrioridade());
+    assertThat(returnTodo.getRealizado()).isEqualTo(t.getRealizado());
+    assertThat(returnTodo.getDataCriacao()).isEqualTo(t.getDataCriacao());
+
+    verify(todoRepository, times(1)).findById(t.getId());
+
+
   }
 
 }
