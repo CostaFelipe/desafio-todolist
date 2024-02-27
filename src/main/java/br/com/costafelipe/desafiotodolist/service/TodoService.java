@@ -18,10 +18,9 @@ public class TodoService {
     this.todoRepository = todoRepository;
   }
 
-  public List<Todo> create(Todo todo) {
+  public Todo create(Todo todo) {
     todo.setDataCriacao(LocalDateTime.now());
-    todoRepository.save(todo);
-    return list();
+    return todoRepository.save(todo);
   }
 
   public List<Todo> update(Todo todo) {
