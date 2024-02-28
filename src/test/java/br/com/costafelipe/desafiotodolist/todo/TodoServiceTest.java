@@ -103,7 +103,32 @@ public class TodoServiceTest {
     assertThat(returnTodo.getDataCriacao()).isEqualTo(t.getDataCriacao());
 
     verify(todoRepository, times(1)).findById(t.getId());
+  }
 
+  @Test
+  void TestSaveSucess() {
+    //given
+    Todo newTodo = new Todo();
+    newTodo.setNome("Teste 1");
+    newTodo.setDescricao("teste e teste e teste");
+    newTodo.setPrioridade(1);
+    newTodo.setRealizado(false);
+    newTodo.setDataCriacao(LocalDateTime.now());
+
+    given(todoRepository.save(newTodo)).willReturn(newTodo);
+
+    //when
+    Todo saveTodo = todoService.create(newTodo);
+
+    //then
+    assertThat(saveTodo.getId()).isEqualTo(newTodo.getId());
+    assertThat(saveTodo.getNome()).isEqualTo(newTodo.getNome());
+    assertThat(saveTodo.getDescricao()).isEqualTo(newTodo.getDescricao());
+    assertThat(saveTodo.getPrioridade()).isEqualTo(newTodo.getPrioridade());
+    assertThat(saveTodo.getRealizado()).isEqualTo(newTodo.getRealizado());
+    assertThat(saveTodo.getDataCriacao()).isEqualTo(newTodo.getDataCriacao());
+
+    verify(todoRepository, times(1)).save(newTodo);
 
   }
 
