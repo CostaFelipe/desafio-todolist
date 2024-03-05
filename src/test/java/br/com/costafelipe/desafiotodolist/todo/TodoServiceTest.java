@@ -40,20 +40,12 @@ public class TodoServiceTest {
 
     this.todos = new ArrayList<>();
 
-    Todo t1 = new Todo();
+    Todo t1 = new Todo("Teste 1", "teste e teste e tes", false, 1);
     t1.setId(uuid);
-    t1.setNome("Teste 1");
-    t1.setDescricao("teste e teste e teste");
-    t1.setPrioridade(1);
-    t1.setRealizado(false);
     t1.setDataCriacao(LocalDateTime.now());
 
-    Todo t2 = new Todo();
+    Todo t2 = new Todo("Teste 2", "teste 2, teste 2, teste 2", true, 2);
     t2.setId(uuid);
-    t2.setNome("Teste 2");
-    t2.setDescricao("teste 2 e teste 2 e teste 2");
-    t2.setPrioridade(2);
-    t2.setRealizado(true);
     t2.setDataCriacao(LocalDateTime.now());
 
     this.todos.add(t1);
@@ -80,12 +72,8 @@ public class TodoServiceTest {
   @Test
   void testFindById() {
     //given
-    Todo t = new Todo();
+    Todo t = new Todo("Teste 1", "teste e teste e teste", false, 1);
     t.setId(UUID.fromString("2c3d8c6d-a8a3-461b-babd-d206226f7bc3"));
-    t.setNome("Teste 1");
-    t.setDescricao("teste e teste e teste");
-    t.setPrioridade(1);
-    t.setRealizado(false);
     t.setDataCriacao(LocalDateTime.now());
 
 
@@ -108,11 +96,7 @@ public class TodoServiceTest {
   @Test
   void TestSaveSucess() {
     //given
-    Todo newTodo = new Todo();
-    newTodo.setNome("Teste 1");
-    newTodo.setDescricao("teste e teste e teste");
-    newTodo.setPrioridade(1);
-    newTodo.setRealizado(false);
+    Todo newTodo = new Todo("Teste 1", "tst, tst, tst", false, 1);
     newTodo.setDataCriacao(LocalDateTime.now());
 
     given(todoRepository.save(newTodo)).willReturn(newTodo);

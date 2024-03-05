@@ -26,6 +26,19 @@ public class Todo implements Serializable {
   private LocalDateTime dataCriacao;
   private LocalDateTime dataUpdate;
 
+
+
+  public Todo(String nome, String descricao, boolean realizado, int prioridade) {
+    this.nome = nome;
+    this.descricao = descricao;
+    this.realizado = realizado;
+    this.prioridade = prioridade;
+  }
+
+  public Todo() {
+
+  }
+
   public UUID getId() {
     return id;
   }
