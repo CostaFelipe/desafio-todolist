@@ -1,4 +1,4 @@
-package br.com.costafelipe.Dtos;
+package br.com.costafelipe.desafiotodolist.Dtos;
 
 public class TodoDto {
   private String nome;
@@ -9,27 +9,33 @@ public class TodoDto {
   public String getNome() {
     return nome;
   }
+
   public void setNome(String nome) {
     this.nome = nome;
   }
+
   public String getDescricao() {
     return descricao;
   }
+
   public void setDescricao(String descricao) {
     this.descricao = descricao;
   }
+
   public boolean isRealizado() {
     return realizado;
   }
+
   public void setRealizado(boolean realizado) {
     this.realizado = realizado;
   }
+
   public int getPrioridade() {
     return prioridade;
   }
+
   public void setPrioridade(int prioridade) {
     this.prioridade = prioridade;
   }
-
 
 }
