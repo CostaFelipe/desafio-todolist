@@ -26,8 +26,6 @@ public class Todo implements Serializable {
   private LocalDateTime dataCriacao;
   private LocalDateTime dataUpdate;
 
-
-
   public Todo(String nome, String descricao, boolean realizado, int prioridade) {
     this.nome = nome;
     this.descricao = descricao;
