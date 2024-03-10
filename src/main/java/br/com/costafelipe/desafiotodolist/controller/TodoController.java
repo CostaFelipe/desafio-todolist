@@ -38,8 +38,10 @@ public class TodoController {
   }
 
   @PutMapping
-  List<Todo> update(Todo todo) {
-    return todoService.update(todo);
+  public ResponseEntity<List<Todo>> update(TodoDto todoDto) {
+    var todo = new Todo();
+    BeanUtils.copyProperties(todoDto, todo);
+    return ResponseEntity.status(HttpStatus.CREATED).body(todoService.update(todo));
   }
 
   @DeleteMapping("/{id}")
@@ -53,8 +55,9 @@ public class TodoController {
   }
 
   @GetMapping
-  List<Todo> list() {
-    return todoService.list();
+  public ResponseEntity<List<Todo>> list() {
+    List<Todo> todoList = todoService.list();
+    return ResponseEntity.ok().body(todoList);
   }
 
 }
