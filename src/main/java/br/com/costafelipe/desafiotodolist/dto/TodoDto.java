@@ -1,4 +1,4 @@
-package br.com.costafelipe.desafiotodolist.Dtos;
+package br.com.costafelipe.desafiotodolist.dto;
 
 public class TodoDto {
   private String nome;
