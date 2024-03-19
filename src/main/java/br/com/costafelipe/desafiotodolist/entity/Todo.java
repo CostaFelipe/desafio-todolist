@@ -25,12 +25,14 @@ public class Todo implements Serializable {
   private int prioridade;
   private LocalDateTime dataCriacao;
   private LocalDateTime dataUpdate;
+  private Category category;
 
-  public Todo(String nome, String descricao, boolean realizado, int prioridade) {
+  public Todo(String nome, String descricao, boolean realizado, int prioridade, Category category) {
     this.nome = nome;
     this.descricao = descricao;
     this.realizado = realizado;
     this.prioridade = prioridade;
+    this.category = category;
   }
 
   public Todo() {
@@ -92,5 +94,15 @@ public class Todo implements Serializable {
   public void setPrioridade(int prioridade) {
     this.prioridade = prioridade;
   }
+
+  public Category getCategory() {
+    return category;
+  }
+
+  public void setCategory(Category category) {
+    this.category = category;
+  }
+
+
 
 }
