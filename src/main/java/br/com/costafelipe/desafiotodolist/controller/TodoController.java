@@ -50,7 +50,7 @@ public class TodoController {
   }
 
   @GetMapping("/{id}")
-  Optional<Todo> getTodo(@PathVariable("id") UUID id) {
+  Todo getTodo(@PathVariable("id") UUID id) {
     return todoService.findById(id);
   }
 

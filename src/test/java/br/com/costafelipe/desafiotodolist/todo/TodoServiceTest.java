@@ -84,7 +84,7 @@ public class TodoServiceTest {
     given(todoRepository.findById(t.getId())).willReturn(Optional.of(t));
 
     //then
-    Todo returnTodo = todoService.findById(UUID.fromString("2c3d8c6d-a8a3-461b-babd-d206226f7bc3")).get();
+    Todo returnTodo = todoService.findById(UUID.fromString("2c3d8c6d-a8a3-461b-babd-d206226f7bc3"));
 
     //when
     assertThat(returnTodo.getId()).isEqualTo(t.getId());

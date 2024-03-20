@@ -38,7 +38,8 @@ public class TodoService {
     return todoRepository.findAll();
   }
 
-  public Optional<Todo> findById(UUID id) {
-    return todoRepository.findById(id);
+  public Todo findById(UUID id) {
+    return todoRepository.findById(id).orElseThrow(() ->
+            new IllegalArgumentException("Author with id: " + id + " could not be found"));
   }
 }
