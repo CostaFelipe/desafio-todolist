@@ -18,7 +18,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.BDDMockito.given;
 
-import br.com.costafelipe.desafiotodolist.entity.Category;
 import br.com.costafelipe.desafiotodolist.entity.Todo;
 import br.com.costafelipe.desafiotodolist.repository.TodoRepository;
 import br.com.costafelipe.desafiotodolist.service.TodoService;
@@ -34,21 +33,18 @@ public class TodoServiceTest {
 
   List<Todo> todos;
 
-  Category category;
-
   UUID uuid = UUID.randomUUID();
 
   @BeforeEach
   void setUp() {
 
     this.todos = new ArrayList<>();
-    category = new Category("mercantil", todos);
 
-    Todo t1 = new Todo("Teste 1", "teste e teste e tes", false, 1, category);
+    Todo t1 = new Todo("Teste 1", "teste e teste e tes", false, 1);
     t1.setId(uuid);
     t1.setDataCriacao(LocalDateTime.now());
 
-    Todo t2 = new Todo("Teste 2", "teste 2, teste 2, teste 2", true, 2, category);
+    Todo t2 = new Todo("Teste 2", "teste 2, teste 2, teste 2", true, 2);
     t2.setId(uuid);
     t2.setDataCriacao(LocalDateTime.now());
 
@@ -76,7 +72,7 @@ public class TodoServiceTest {
   @Test
   void testFindById() {
     //given
-    Todo t = new Todo("Teste 1", "teste e teste e teste", false, 1, category);
+    Todo t = new Todo("Teste 1", "teste e teste e teste", false, 1);
     t.setId(UUID.fromString("2c3d8c6d-a8a3-461b-babd-d206226f7bc3"));
     t.setDataCriacao(LocalDateTime.now());
 
@@ -100,7 +96,7 @@ public class TodoServiceTest {
   @Test
   void TestSaveSucess() {
     //given
-    Todo newTodo = new Todo("Teste 1", "tst, tst, tst", false, 1, category);
+    Todo newTodo = new Todo("Teste 1", "tst, tst, tst", false, 1);
     newTodo.setDataCriacao(LocalDateTime.now());
 
     given(todoRepository.save(newTodo)).willReturn(newTodo);

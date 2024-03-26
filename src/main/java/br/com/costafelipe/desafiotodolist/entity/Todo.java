@@ -4,14 +4,12 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,16 +28,12 @@ public class Todo implements Serializable {
   private LocalDateTime dataCriacao;
   private LocalDateTime dataUpdate;
 
-  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JoinColumn(name = "category_id")
-  private Category category;
 
-  public Todo(String nome, String descricao, boolean realizado, int prioridade, Category category) {
+  public Todo(String nome, String descricao, boolean realizado, int prioridade) {
     this.nome = nome;
     this.descricao = descricao;
     this.realizado = realizado;
     this.prioridade = prioridade;
-    this.category = category;
   }
 
   public Todo() {
@@ -101,15 +95,5 @@ public class Todo implements Serializable {
   public void setPrioridade(int prioridade) {
     this.prioridade = prioridade;
   }
-
-  public Category getCategory() {
-    return category;
-  }
-
-  public void setCategory(Category category) {
-    this.category = category;
-  }
-
-
 
 }
